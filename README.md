@@ -2,6 +2,8 @@
 
 A comprehensive Salesforce solution for managing clients, invoices, line items, and payments with automated calculations and reminders.
 
+> 📂 **View Complete Portfolio:** [PROJECTS_PORTFOLIO.md](PROJECTS_PORTFOLIO.md) - See all my Salesforce projects in one place!
+
 ## Features
 
 - **Client Management**: Track client information and relationship history
