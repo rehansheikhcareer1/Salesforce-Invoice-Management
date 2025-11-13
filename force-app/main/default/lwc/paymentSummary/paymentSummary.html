@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Payment Summary" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <template if:true={summary}>
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <div class="slds-box slds-theme_default">
+                            <div class="slds-text-heading_small">Total Billed</div>
+                            <div class="slds-text-heading_medium slds-m-top_x-small">
+                                {formattedTotalBilled}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <div class="slds-box slds-theme_success">
+                            <div class="slds-text-heading_small">Total Paid</div>
+                            <div class="slds-text-heading_medium slds-m-top_x-small">
+                                {formattedTotalPaid}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <div class="slds-box slds-theme_warning">
+                            <div class="slds-text-heading_small">Outstanding</div>
+                            <div class="slds-text-heading_medium slds-m-top_x-small">
+                                {formattedTotalOutstanding}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:true={error}>
+                <div class="slds-text-color_error">
+                    Error loading payment summary
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Invoices" icon-name="standard:orders">
+        <div class="slds-m-around_medium">
+            <template if:true={hasInvoices}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={invoices}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+            <template if:false={hasInvoices}>
+                <div class="slds-text-align_center slds-p-around_medium">
+                    <p>No invoices found for this client.</p>
+                </div>
+            </template>
+            <template if:true={error}>
+                <div class="slds-text-color_error slds-p-around_small">
+                    Error loading invoices
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

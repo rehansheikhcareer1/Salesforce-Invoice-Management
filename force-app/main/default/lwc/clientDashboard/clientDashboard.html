@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Client Dashboard" icon-name="standard:dashboard">
+        <div class="slds-m-around_medium">
+            <c-payment-summary record-id={recordId}></c-payment-summary>
+            <div class="slds-m-top_medium">
+                <c-invoice-list record-id={recordId}></c-invoice-list>
+            </div>
+        </div>
+    </lightning-card>
+</template>

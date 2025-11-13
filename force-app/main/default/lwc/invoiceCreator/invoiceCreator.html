@@ -1,0 +1,82 @@
+<template>
+    <lightning-card title="Create New Invoice" icon-name="standard:orders">
+        <div class="slds-m-around_medium">
+            <lightning-record-edit-form object-api-name="Invoice__c" onsubmit={handleSubmit} onsuccess={handleSuccess}>
+                <lightning-input-field field-name="Client__c" value={recordId} disabled></lightning-input-field>
+                <lightning-input-field field-name="Due_Date__c" required></lightning-input-field>
+                <lightning-input-field field-name="Tax_Rate__c"></lightning-input-field>
+                
+                <div class="slds-m-top_medium">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Line Items</h3>
+                    <template for:each={lineItems} for:item="item" for:index="index">
+                        <div key={item.id} class="slds-box slds-m-bottom_small">
+                            <lightning-input
+                                label="Product/Service"
+                                value={item.productName}
+                                data-index={index}
+                                onchange={handleLineItemChange}
+                                data-field="productName"
+                                required>
+                            </lightning-input>
+                            <lightning-textarea
+                                label="Description"
+                                value={item.description}
+                                data-index={index}
+                                onchange={handleLineItemChange}
+                                data-field="description">
+                            </lightning-textarea>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <lightning-input
+                                        type="number"
+                                        label="Quantity"
+                                        value={item.quantity}
+                                        data-index={index}
+                                        onchange={handleLineItemChange}
+                                        data-field="quantity"
+                                        min="1"
+                                        step="0.01"
+                                        required>
+                                    </lightning-input>
+                                </div>
+                                <div class="slds-col">
+                                    <lightning-input
+                                        type="number"
+                                        label="Unit Price"
+                                        value={item.unitPrice}
+                                        data-index={index}
+                                        onchange={handleLineItemChange}
+                                        data-field="unitPrice"
+                                        min="0.01"
+                                        step="0.01"
+                                        formatter="currency"
+                                        required>
+                                    </lightning-input>
+                                </div>
+                            </div>
+                            <lightning-button
+                                label="Remove"
+                                onclick={handleRemoveItem}
+                                data-index={index}
+                                class="slds-m-top_small">
+                            </lightning-button>
+                        </div>
+                    </template>
+                    <lightning-button
+                        label="Add Line Item"
+                        onclick={handleAddItem}
+                        variant="neutral">
+                    </lightning-button>
+                </div>
+
+                <div class="slds-m-top_large">
+                    <lightning-button
+                        type="submit"
+                        label="Create Invoice"
+                        variant="brand">
+                    </lightning-button>
+                </div>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>
